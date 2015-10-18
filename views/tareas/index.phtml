@@ -1,0 +1,23 @@
+<h2>Lista de tareas</h2>
+
+<table border="1">
+	<tr>
+		<th>ID</th>
+		<th>Nombre</th>
+		<th>Fecha</th>
+		<th>Prioridad</th>
+		<th>Status</th>
+		<th>Acción</th>
+	</tr>
+<?php foreach ($this->tareas as $tarea): ?>
+	<tr>
+		<td><?php echo $tarea["id"]; ?></td>
+		<td><?php echo $tarea["nombre"]; ?></td>
+		<td><?php echo $tarea["fecha"]; ?></td>
+		<td><?php echo $tarea["prioridad"]; ?></td>
+		<td><?php echo $tarea["status"]; ?></td>
+		<td>Editar | Eliminar</td>
+	</tr>
+<?php endforeach; ?>
+
+</table>
