@@ -1,22 +1,18 @@
 <?php
-
-/**
-*
-* Class Password
-* Clase para el manejo de Contraseña
-*
-* @author Miguel Angel 
-* @version 1.0 Primera version estbale
-* @package Seguridad
-* @copyright 2015
+/*
+* Clase para el manejo de contraseñas
 *
 */
-	class Password{
+class Password{
 	
 	public function __construct(){
-			$this->checkBlowfish();
+		$this->checkBlowfish();
 	}
-   
+
+/*
+* Clase para el manejo de contraseñas
+*
+*/
 	private function checkBlowfish(){
 		if (!defined("CRYPT_BLOWFISH") && !CRYPT_BLOWFISH) {
 			echo "Algoritmo Blowfish no roportado";
@@ -33,11 +29,6 @@
 
 		return crypt($password, $salt);
 	}
-	/**
-	 * Invalid validacion de hash de contraseña
-	 * metodo que coprar dos hash de contraseña y regresa falso en caso de no ser 
-	 *
-	 */
 
 	public function isValid($pass1, $pass2){
 		if (crypt($pass1, $pass2) == $pass2) {
@@ -46,21 +37,12 @@
 		
 		return false;	
 	}
-	/**
-	 *[passwordVerify verificacion de contraseña]
-	 * @param string $ pass1 hash a comparar
-	 * @param string $ pass2 hash base
-	 * @return boolean 
-	 * @since 5.5
-	 */
 
+	//v 5.5
 	public function passwordVerify($pass1, $pass2){
 		if (password_verify($pass1, $pass2)) {
 			return true;
 		}
 		return false;
 	}
-
 }
-
-?>

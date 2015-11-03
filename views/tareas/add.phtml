@@ -1,0 +1,26 @@
+<section class="section" id="head">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">
+				<h2>Agregar tareas</h2>
+
+				<form action="<?php echo APP_URL.'tareas/add';?>" method="POST" accept-charset="utf-8">
+					<p>Nombre: <input type="text" name="nombre" value=""></p>
+					<p>Categoria<select name="categoria_id">
+                  
+                    <?php foreach ($this->categoria as $categorias): ?>
+
+					 <option value="<?php echo $categorias["id"] ?>"><?php	echo $categorias["nombre"]; ?>
+
+					 </option>
+                     <?php endforeach; ?></select></p>
+
+					<p>Fecha:  <input type="date" name="fecha" value=""></p>
+					<p>Prioridad:<input ttype="range" name="prioridad" value=""></p>
+					<p>Status:<input type="number" name="status" value=""></p>
+					<p><input type="submit"></p>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,4 +1,9 @@
 <?php
+/**
+ * se define las carpetas y archivos que se van a utilzar en el framework
+ * se define loas valores para accesar a la base de datos
+ * se define el nombre del proyecto
+ */
 
 define("DEFAULT_CONTROLLER", "tareas");
 define("DEFAULT_LAYOUT", "default");
@@ -6,8 +11,6 @@ define("DEFAULT_LAYOUT", "default");
 define("APP_FOLDER", "framework");
 define("APP_URL", "http://".$_SERVER['SERVER_NAME']."/".APP_FOLDER."/");
 
-echo APP_URL;
-exit;
 define("APP_URL_CSS", APP_URL."public/css/");
 define("APP_URL_IMG", APP_URL."public/img/");
 define("APP_URL_JS",  APP_URL."public/js/");

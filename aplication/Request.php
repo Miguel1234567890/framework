@@ -1,10 +1,24 @@
 <?php
+/**
+ * Clase Request servira recibir las peticiones.
+ * function getControlador
+ * function getMetodo
+ * function getArgs
+ * 
+ * @package Framework
+ * @author Miguel Angel <mikehernandezcruz@gmail.com>
+ */
+
 
 class Request{
 
 	private $_controlador;
 	private $_metodo;
 	private $_argumentos;
+
+	/**
+	 * Metodo para inicializar los filtrados de URL
+	 */
 
 	public function __construct(){
 		if(isset($_GET['url'])){
@@ -27,13 +41,27 @@ class Request{
 		}
 	}
 
+	/**
+ * Metodo getControlador para obtener el controlador 
+ * @return _controlador
+ */
+
 	public function getControlador(){
 		return $this->_controlador;
 	}
+	/**
+ * Medoto getMetodo Permitira traer el metodo 
+ * @return _metodo
+ */
 
 	public function getMetodo(){
 		return $this->_metodo;
 	}
+
+	/**
+ * getArgs argumetos que se usaran para dirigirce alos metodos
+ * @return _argumentos
+ */
 
 	public function getArgs(){
 		return $this->_argumentos;

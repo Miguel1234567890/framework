@@ -1,4 +1,10 @@
 <?php
+/**
+ * Clase que permite redireccionar  al Framework usando PDO
+ *
+ * @package framework
+ * @author Miguel Angel <mikehernandezcruz@gmail.com>
+ */
 
 class Bootstrap
 {
@@ -19,9 +25,15 @@ class Bootstrap
 			}else{
 				$metodo = "index";
 			}
+			if ($metodo == 'login') {
+				# code...
+			}else{
+				Authorization::Logged();
+
+			}
 
 			if (isset($args)) {
-				call_user_func_array(array($Controlador, $metodo), $peticion->getArgs());
+				call_user_func_array(array($Controlador, $metodo),$args);
 			}else{
 				call_user_func(array($Controlador, $metodo));
 			}
