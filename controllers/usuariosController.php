@@ -100,21 +100,21 @@ public function delete($id = null){
  */
 
 public function login(){
+      if($_POST){
+			$pass = new Password();
+			$filter = new Validations();
+			$auth = new Authorization();
 
-	if($_POST){
-		$pass = new Password();
-		$filter = new Validations();
-		$auth = new Authorization();
+			$username = $filter->sanitizeText($_POST["username"]);
+			$password = $filter->sanitizeText($_POST["password"]);
 
-		$username = $filter->sanitizeText($_POST['username']);
-		$password = $filter->sanitizeText($_POST['password']);
+			$options['conditions'] = " username = '$username'";
+			$usuario = $this->db->find("usuarios", "first", $options);
 
-		$options = array('conditions' => "username = '$username'");
-		$usuario = $this->db->find('usuarios','first', $options);
-		if ($pass->isValid($password,$usuario['password'])) {
-			$auth->login($usuario);
-			$this->redirect(array('controller'=>'tareas'));
-		}else{
+			if($pass->isValid($password, $usuario['password'])){
+				$auth->login($usuario);
+				$this->redirect(array("controller"=>"tareas"));
+			}else{
 			echo "Usuario no Valido";
 		}
 	}

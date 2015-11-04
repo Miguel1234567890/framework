@@ -66,7 +66,10 @@ class tareasController extends AppController
 			'first',
 			$conditions
 		);
-		$this->_view->categoria = $this->db->find('categorias', 'all');
+
+		$conditions =array('order'=>'nombre asc' );
+
+		$this->_view->categoria = $this->db->find('categorias', 'all', $conditions);
 		$this->_view->titulo="Editar Tarea";
 		$this->_view->renderizar('edit');
 
@@ -96,8 +99,9 @@ public function add(){
 			/**
 			 * Sirve para Llenar los input de en la vista y poder visualizar 
 			 */
+			$conditions =array('order'=>'nombre asc' );
 
-			$this->_view->categoria = $this->db->find('categorias', 'all');
+			$this->_view->categoria = $this->db->find('categorias', 'all', $conditions);
 			$this->_view->titulo="Agregar tarea";
 			$this->_view->renderizar=("add");
 
