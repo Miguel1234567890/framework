@@ -11,8 +11,10 @@ class usuariosController extends AppController{
 	/**
 	 * Metodo para ejecuta el constructor del padre AppController 
 	 */
+	protected $usuario;
 	public function __construct(){
 		parent::__construct();
+		$this->usuario = new classPDO();
 	}
 
 	/**
@@ -23,7 +25,8 @@ class usuariosController extends AppController{
 
 public function index(){
 		$this->_view->titulo = "Listado de usuarios";
-		$this->_view->usuarios= $this->db->find('usuarios', 'all');
+		$this->_view->usuarios= $this->usuario->find('usuarios', 'all');
+		$this->_view->setLayout('default');
 		$this->_view->renderizar('index');
 }
      /**
@@ -38,14 +41,14 @@ public function edit($id = null){
 				$pass = new Password();
 				$_POST['password'] = $pass->getPassword($_POST['pass']);;
 			}
-			if ($this->db->update("usuarios", $_POST)) {
+			if ($this->usuario->update("usuarios", $_POST)) {
 				$this->redirect(array('controller'=>'usuarios', 'action'=>'index'));
 			}else{
 				$this->redirect(array('controller'=>'usuarios', 'action'=>'edit'));
 			}
 		}else{
 			$this->_view->titulo = "Editar usuario";
-			$this->_view->usuario = $this->db->find('usuarios', 'first', array('conditions'=>'id='.$id));
+			$this->_view->usuario = $this->usuario->find('usuarios', 'first', array('conditions'=>'id='.$id));
 			$this->_view->renderizar('edit');
 		}
 
@@ -64,7 +67,7 @@ public function add(){
 
 			$_POST['password'] = $pass->getPassword($_POST['password']);
 
-			if ($this->db->save("usuarios", $_POST)) {
+			if ($this->usuario->save("usuarios", $_POST)) {
 				$this->redirect(array('controller'=>'usuarios', 'action'=>'index'));
 			}else{
 				$this->redirect(array('controller'=>'usuarios', 'action'=>'add'));
@@ -82,7 +85,7 @@ public function add(){
  */
 public function delete($id = null){
 		$conditions = 'id='.$id;
-		if ($this->db->delete('usuarios', $conditions)) {
+		if ($this->usuario->delete('usuarios', $conditions)) {
 			$this->redirect(
 					array(
 						'controller'=>'usuarios',
@@ -109,7 +112,7 @@ public function login(){
 			$password = $filter->sanitizeText($_POST["password"]);
 
 			$options['conditions'] = " username = '$username'";
-			$usuario = $this->db->find("usuarios", "first", $options);
+			$usuario = $this->usuario->find("usuarios", "first", $options);
 
 			if($pass->isValid($password, $usuario['password'])){
 				$auth->login($usuario);
@@ -118,7 +121,7 @@ public function login(){
 			echo "Usuario no Valido";
 		}
 	}
-
+    $this->_view->setLayout('login');
 	$this->_view->renderizar('login');
 
 }

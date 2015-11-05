@@ -6,7 +6,7 @@
 		<meta name="description" content="">
 		<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
 
-		<title>Frameword MVC<?php if(isset($this->titulo)) { echo $this->titulo; } ?></title>
+		<title>Frameword<?php if(isset($this->titulo)) { echo $this->titulo; } ?></title>
 		<link rel="stylesheet" type="text/css" href="<?php echo $_layoutParams["ruta_css"]; ?>bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo $_layoutParams["ruta_css"]; ?>magister.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo $_layoutParams["ruta_js"]; ?>magister.js">

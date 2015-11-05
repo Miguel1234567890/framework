@@ -1,7 +1,7 @@
 <?php
 /**
  * se define las carpetas y archivos que se van a utilzar en el framework
- * se define loas valores para accesar a la base de datos
+ * se define los valores para accesar a la base de datos
  * se define el nombre del proyecto
  */
 

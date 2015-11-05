@@ -16,9 +16,10 @@ protected $_view;
  * se instacia _view para la vistas.
  */
 
-	public function __construct(){
+      public function __construct(){
 		$this->_view = new View(new Request);
 		$this->db = new classPDO();
+		
 	}
 
 	/**

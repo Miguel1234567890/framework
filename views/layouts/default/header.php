@@ -29,13 +29,11 @@
 					</button>
 						</button>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-						<li><a href="<?php echo APP_URL;?>">Inicio</a></li>
 				        <li><a href="<?php echo APP_URL;?>Tareas">Tareas</a></li>
 				        <li><a href="<?php echo APP_URL;?>Usuarios">Usuarios</a></li>
 						<li><a href="<?php echo APP_URL;?>Categorias">Categorias</a></li>
 				        <li><a href="<?php echo APP_URL;?>Usuarios/logout">Salir</a></li>
 					</ul>
-					<h3>Hola  <?php echo $_SESSION['username'];?></h3>
 				</div>
 		</div>
 	</nav>

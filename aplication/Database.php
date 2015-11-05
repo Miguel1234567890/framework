@@ -76,7 +76,7 @@ class ClassPDO{
   *  - limit
   * @return object
   */
-
+  //public function find
 	public function find($table = NULL, $query = NULL, $options = array()){
 		$fields = '*';
 		$parameters ='';
@@ -225,3 +225,6 @@ class ClassPDO{
 	 */
 
 $db = new ClassPDO;
+
+
+
